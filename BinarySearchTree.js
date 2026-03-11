@@ -156,6 +156,19 @@ class Tree {
         this.preOrderForEach(callback, node.left);
         this.preOrderForEach(callback, node.right);
     }
+
+    postOrderForEach(callback, node = this.root) {
+
+        if(!callback) {
+            throw new Error("Callback function is required");
+        }
+
+        if(node === null) return;
+
+        this.preOrderForEach(callback, node.left);
+        this.preOrderForEach(callback, node.right);
+        callback(node.data);
+    }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -180,3 +193,4 @@ const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5]);
 // tree.levelOrderForEach(value => console.log(value));
 // tree.inOrderForEach(value => console.log(value));
 // tree.preOrderForEach(value => console.log(value));
+// tree.postOrderForEach(value => console.log(value));
