@@ -68,6 +68,40 @@ class Tree {
         }
 
     }
+
+    findMin(node) {
+        while(node.left) {
+            node = node.left
+        }
+
+        return node;
+    }
+
+    deleteItem(value, node = this.root) {
+
+        if(node === null) return null;
+
+        if(value < node.data) {
+            node.left = this.deleteItem(value, node.left);
+        } else if(value > node.data) {
+            node.right = this.deleteItem(value, node.right);
+        } else {
+            if(node.left === null && node.right === null) {
+                return null;
+            }
+
+            if(node.left === null) return node.right;
+            if(node.right === null) return node.left;
+
+            let successor = this.findMin(node.right);
+
+            node.data = successor.data;
+
+            node.right = this.deleteItem(successor.data, node.right);
+        }
+
+        return node;
+    }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
