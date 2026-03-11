@@ -169,6 +169,31 @@ class Tree {
         this.preOrderForEach(callback, node.right);
         callback(node.data);
     }
+
+    height(value) {
+       let current = this.root;
+
+       while(current) {
+         if(value === current.data) {
+            return this.getHeight(current);
+         } else if(value < current.data) {
+            current = current.left;
+         } else {
+            current = current.right;
+         }
+       }
+
+       return undefined;
+    }
+
+    getHeight(node) {
+        if(node === null) return -1;
+
+        const leftHeight = this.getHeight(node.left);
+        const rightHeight = this.getHeight(node.right);
+
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -194,3 +219,4 @@ const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5]);
 // tree.inOrderForEach(value => console.log(value));
 // tree.preOrderForEach(value => console.log(value));
 // tree.postOrderForEach(value => console.log(value));
+// console.log(tree.height(8));
