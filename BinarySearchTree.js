@@ -102,6 +102,32 @@ class Tree {
 
         return node;
     }
+
+    levelOrderForEach(callback) {
+
+        if(!callback) {
+            throw new Error("Callback function is required");
+        }
+
+        if(!this.root) return;
+
+        const queue = [];
+        queue.push(this.root);
+
+        while(queue.length > 0) {
+            const current = queue.shift();
+
+            callback(current.data);
+
+            if(current.left) {
+                queue.push(current.left);
+            }
+
+            if(current.right) {
+                queue.push(current.right);
+            }
+        }
+    }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
