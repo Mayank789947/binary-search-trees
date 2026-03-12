@@ -224,6 +224,14 @@ class Tree {
 
         return this.isBalanced(node.left) && this.isBalanced(node.right);
     }
+
+    rebalance() {
+        let values = [];
+
+        this.inOrderForEach((value) => values.push(value));
+
+        this.root =  this.buildTree(values, 0, values.length - 1);
+    }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -242,7 +250,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     }
 };
 
-const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5]);
+const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 35, 45, 67, 78]);
 
 // prettyPrint(tree.root);
 // tree.levelOrderForEach(value => console.log(value));
@@ -250,3 +258,4 @@ const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5]);
 // tree.preOrderForEach(value => console.log(value));
 // tree.postOrderForEach(value => console.log(value));
 // console.log(tree.height(8));
+// console.log(tree.isBalanced());
