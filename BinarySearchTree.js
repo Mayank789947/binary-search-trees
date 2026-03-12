@@ -212,6 +212,18 @@ class Tree {
 
         return undefined;
     }
+
+    isBalanced(node = this.root) {
+
+        if(node === null) return true;
+
+        let leftHeight = this.getHeight(node.left);
+        let rightHeight = this.getHeight(node.right);
+
+        if(Math.abs(leftHeight - rightHeight) > 1) return false;
+
+        return this.isBalanced(node.left) && this.isBalanced(node.right);
+    }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
