@@ -4,7 +4,7 @@ A project on binary search tree algorithm with following methods :-
 
 To check all the methods of this project run the following command in your terminal 
 # command 
-# node BinarySearchTree.js
+- node BinarySearchTree.js
 
 
 # methods
