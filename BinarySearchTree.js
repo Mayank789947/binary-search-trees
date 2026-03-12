@@ -250,7 +250,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     }
 };
 
-const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 35, 45, 67, 78]);
+const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 35, 45, 67, 78, 110, 132, 143, 126]);
 
 // prettyPrint(tree.root);
 // tree.levelOrderForEach(value => console.log(value));
